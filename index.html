@@ -877,95 +877,63 @@
 <section id="work">
   <div class="work-header reveal">
     <h2 class="work-heading">Selected<br><em>Work</em></h2>
-    <span class="work-count">6 projects / 2022–2025</span>
+    <span class="work-count">6 projects / 2022–2026</span>
   </div>
 
   <div class="projects-grid">
-    <div class="project-row reveal" data-color="#1A1A2E" data-label="Branding">
+   <div class="project-row reveal" data-color="#1A1A2E" data-label="BEM ITB STIKOM BALI">
       <span class="proj-num">01</span>
       <div class="proj-info">
-        <h3 class="proj-title">Nuance Studio — Rebrand</h3>
-        <p class="proj-sub">Brand Identity / Visual System</p>
+        <h3 class="proj-title">BEM ITB STIKOM BALI — Social Media</h3>
+        <p class="proj-sub">Social Media / Visual System</p>
       </div>
       <div class="proj-tags">
         <span class="proj-tag">Branding</span>
         <span class="proj-tag">Typography</span>
         <span class="proj-tag">Art Direction</span>
       </div>
-      <span class="proj-year">2025</span>
+      <span class="proj-year">2026</span>
     </div>
 
-    <div class="project-row reveal" data-color="#2D1B69" data-label="Social Media">
+    <div class="project-row reveal" data-color="#2D1B69" data-label="StellaBali" data-image="StellaBali.png">
       <span class="proj-num">02</span>
       <div class="proj-info">
-        <h3 class="proj-title">Aruna — Social Media Campaign</h3>
-        <p class="proj-sub">Social Media / Campaign Design</p>
-      </div>
-      <div class="proj-tags">
-        <span class="proj-tag">Social Media</span>
-        <span class="proj-tag">Campaign</span>
-        <span class="proj-tag">Motion</span>
-      </div>
-      <span class="proj-year">2024</span>
-    </div>
-
-    <div class="project-row reveal" data-color="#0D2137" data-label="UI/UX">
-      <span class="proj-num">03</span>
-      <div class="proj-info">
-        <h3 class="proj-title">Kopi Ritual — App Design</h3>
-        <p class="proj-sub">UI/UX / Mobile Application</p>
+        <h3 class="proj-title">Stella Bali — UI/UX Design</h3>
+        <p class="proj-sub">Website Design</p>
       </div>
       <div class="proj-tags">
         <span class="proj-tag">UI/UX</span>
-        <span class="proj-tag">Mobile</span>
         <span class="proj-tag">Figma</span>
       </div>
-      <span class="proj-year">2024</span>
+      <span class="proj-year">2026</span>
     </div>
 
-    <div class="project-row reveal" data-color="#1C1C1C" data-label="Brand">
+    <div class="project-row reveal" data-color="#0D2137" data-label="Bhaliera" data-image="Bhaliera.png">
+      <span class="proj-num">03</span>
+      <div class="proj-info">
+        <h3 class="proj-title">Bhaliera — UI/UX Design</h3>
+        <p class="proj-sub">UI/UX / Website</p>
+      </div>
+      <div class="proj-tags">
+        <span class="proj-tag">UI/UX</span>
+        <span class="proj-tag">Figma</span>
+      </div>
+      <span class="proj-year">2025</span>
+    </div>
+
+     <div class="project-row reveal" data-color="#1C1C1C" data-label="Pemuteran" data-image="Pemuteran.png">
       <span class="proj-num">04</span>
       <div class="proj-info">
-        <h3 class="proj-title">Hara Collective — Brand Identity</h3>
-        <p class="proj-sub">Brand Identity / Packaging</p>
+        <h3 class="proj-title">Pemuteran Village — UI/UX Design</h3>
+        <p class="proj-sub">UI/UX / Website</p>
       </div>
       <div class="proj-tags">
-        <span class="proj-tag">Branding</span>
-        <span class="proj-tag">Packaging</span>
-        <span class="proj-tag">Print</span>
+        <span class="proj-tag">UI/UX</span>
+        <span class="proj-tag">Figma</span>
       </div>
-      <span class="proj-year">2023</span>
+      <span class="proj-year">2025</span>
     </div>
 
-    <div class="project-row reveal" data-color="#2C1810" data-label="UI/UX">
-      <span class="proj-num">05</span>
-      <div class="proj-info">
-        <h3 class="proj-title">Satu Ruang — Dashboard UI</h3>
-        <p class="proj-sub">UI Design / Design System</p>
-      </div>
-      <div class="proj-tags">
-        <span class="proj-tag">UI Design</span>
-        <span class="proj-tag">Dashboard</span>
-        <span class="proj-tag">System</span>
-      </div>
-      <span class="proj-year">2023</span>
-    </div>
-
-    <div class="project-row reveal" data-color="#0F2318" data-label="Social">
-      <span class="proj-num">06</span>
-      <div class="proj-info">
-        <h3 class="proj-title">Medan Organic — Content Direction</h3>
-        <p class="proj-sub">Social Media / Photography Direction</p>
-      </div>
-      <div class="proj-tags">
-        <span class="proj-tag">Social Media</span>
-        <span class="proj-tag">Photography</span>
-        <span class="proj-tag">Direction</span>
-      </div>
-      <span class="proj-year">2022</span>
-    </div>
-  </div>
-</section>
 
 <!-- SERVICES -->
 <section id="services">
@@ -1086,26 +1054,23 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(el => observer.observe(el));
 
 // ─── PROJECT HOVER PREVIEW ───
-const preview     = document.getElementById('preview');
-const previewInner = document.getElementById('preview-inner');
-const rows = document.querySelectorAll('.project-row');
-
 rows.forEach(row => {
   row.addEventListener('mouseenter', () => {
+    const img = row.dataset.image;
     const color = row.dataset.color || '#1a1a1a';
     const label = row.dataset.label || 'Project';
-    previewInner.style.background = color;
-    previewInner.textContent = label;
+    if (img) {
+      previewInner.style.background = `url('${img}') center/cover no-repeat`;
+      previewInner.textContent = '';
+    } else {
+      previewInner.style.background = color;
+      previewInner.textContent = label;
+    }
     preview.classList.add('show');
   });
   row.addEventListener('mouseleave', () => {
     preview.classList.remove('show');
   });
-});
-
-document.addEventListener('mousemove', e => {
-  preview.style.left = (e.clientX + 24) + 'px';
-  preview.style.top  = (e.clientY - 80) + 'px';
 });
 
 // ─── TEXT SCRAMBLE (hero name) ───
