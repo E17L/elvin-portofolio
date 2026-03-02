@@ -1075,6 +1075,10 @@ rows.forEach(row => {
   row.addEventListener('mouseleave', () => {
     preview.classList.remove('show');
   });
+  document.addEventListener('mousemove', e => {
+  preview.style.left = (e.clientX + 24) + 'px';
+  preview.style.top  = (e.clientY - 80) + 'px';
+  });
   
 });
 
