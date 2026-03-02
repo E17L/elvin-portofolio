@@ -1064,7 +1064,8 @@ rows.forEach(row => {
     const color = row.dataset.color || '#1a1a1a';
     const label = row.dataset.label || 'Project';
     if (img) {
-      previewInner.style.background = `url('${img}') center/cover no-repeat`;
+      previewInner.style.background = `url('${img}') center/contain no-repeat`;
+      previewInner.style.backgroundColor = row.dataset.color || '#1a1a1a';
       previewInner.textContent = '';
     } else {
       previewInner.style.background = color;
