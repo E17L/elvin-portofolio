@@ -865,6 +865,12 @@
       font-size: 10px;
       color: var(--muted);
       text-align: right;
+      transition: opacity .3s, transform .3s;
+    }
+
+    .proj-row:hover .proj-y {
+      opacity: 0;
+      transform: translateX(-10px);
     }
 
     .proj-open-btn {
