@@ -59,32 +59,33 @@
       position: fixed;
       z-index: 9999;
       pointer-events: none;
-      mix-blend-mode: difference;
     }
 
     #cur-dot {
       width: 8px;
       height: 8px;
-      background: var(--fg);
+      background: var(--red);
       border-radius: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(232, 48, 42, .3);
     }
 
     #cur-ring {
       width: 40px;
       height: 40px;
-      border: 1px solid rgba(10, 10, 10, .3);
+      border: 1.5px solid rgba(232, 48, 42, .5);
       border-radius: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
-      transition: width .35s, height .35s, border-color .35s;
+      transition: width .35s, height .35s, border-color .35s, background .35s;
     }
 
     body.hovering #cur-ring {
       width: 64px;
       height: 64px;
       border-color: var(--red);
+      background: rgba(232, 48, 42, .05);
     }
 
     body.clicking #cur-dot {
@@ -822,8 +823,6 @@
       color: var(--red);
     }
 
-    .proj-info {}
-
     .proj-title {
       font-family: var(--serif);
       font-size: 26px;
@@ -1077,7 +1076,7 @@
 
     /* ── SERVICES ── */
     #services {
-      background: var(--red);
+      background: var(--fg);
     }
 
     #services .s-label {
@@ -1100,7 +1099,7 @@
     .services-head em {
       font-family: var(--serif);
       font-style: italic;
-      color: #0E0E0E;
+      color: #F33732;
     }
 
     .services-grid {
