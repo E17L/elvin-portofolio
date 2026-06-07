@@ -1019,6 +1019,9 @@
       transform: translateY(100%);
       transition: transform .7s cubic-bezier(.76, 0, .24, 1);
       overflow: hidden;
+      color: var(--bg);
+      --fg: #F8F5F0;
+      --border: rgba(248, 245, 240, .15);
     }
 
     #modal.open {
@@ -1127,7 +1130,51 @@
       font-size: 15px;
       line-height: 1.85;
       color: rgba(242, 237, 230, .65);
+      margin-bottom: 32px;
+    }
+
+    .modal-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 48px;
+      align-self: flex-start;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--fg);
+      background: transparent;
+      border: 1px solid var(--fg);
+      padding: 16px 32px;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: color .4s, border-color .4s;
+    }
+
+    .modal-link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: translateX(-101%);
+      transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+      z-index: -1;
+    }
+
+    .modal-link-btn:hover {
+      color: #0E0E0E;
+      border-color: var(--red);
+    }
+
+    .modal-link-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .modal-link-btn span {
+      position: relative;
+      z-index: 1;
     }
 
     .modal-details {
@@ -1936,21 +1983,22 @@
       <div class="proj-row reveal d1" data-index="1">
         <span class="proj-n">02</span>
         <div class="proj-info">
-          <h3 class="proj-title">Stella Bali — UI/UX Design</h3>
-          <p class="proj-sub">UI/UX / Website</p>
+          <h3 class="proj-title">Desa Karang Dalem Tua Booklet - Print Design</h3>
+          <p class="proj-sub">Print Design / Photography</p>
         </div>
-        <div class="proj-cats"><span class="proj-cat">UI/UX</span><span class="proj-cat">Figma</span></div>
+        <div class="proj-cats"><span class="proj-cat">Print Design</span><span class="proj-cat">Photography</span></div>
         <span class="proj-y">2026</span>
         <span class="proj-open-btn">Open ↗</span>
       </div>
       <div class="proj-row reveal d2" data-index="2">
         <span class="proj-n">03</span>
         <div class="proj-info">
-          <h3 class="proj-title">Bhaliera — UI/UX Design</h3>
-          <p class="proj-sub">UI/UX / Website</p>
+          <h3 class="proj-title">Mie GA - Brand Design</h3>
+          <p class="proj-sub">Brand Design / Visual Identity</p>
         </div>
-        <div class="proj-cats"><span class="proj-cat">UI/UX</span><span class="proj-cat">Figma</span></div>
-        <span class="proj-y">2025</span>
+        <div class="proj-cats"><span class="proj-cat">Brand Design</span><span class="proj-cat">Visual Identity</span>
+        </div>
+        <span class="proj-y">2024</span>
         <span class="proj-open-btn">Open ↗</span>
       </div>
       <div class="proj-row reveal d3" data-index="3">
@@ -2086,6 +2134,9 @@
       <h2 class="modal-title" id="modalTitle">Project Title</h2>
       <p class="modal-sub" id="modalSub">Category / Type</p>
       <p class="modal-desc" id="modalDesc">Project description goes here.</p>
+      <a href="#" target="_blank" class="modal-link-btn" id="modalLink">
+        <span>Visit Website ↗</span>
+      </a>
       <div class="modal-details">
         <div>
           <div class="modal-detail-label">Year</div>
@@ -2120,28 +2171,32 @@
         desc: 'A full social media visual system for BEM ITB STIKOM Bali — feed templates, story formats, and campaign assets built for consistency at scale across Instagram and other platforms.',
         year: '2026', role: 'Graphic Designer', tools: 'Photoshop, Illustrator', type: 'Social Media',
         tags: ['Branding', 'Social Media', 'Typography', 'Art Direction'],
-        image: '', bg: '#0D1B2A'
+        image: 'BEM.png', bg: '#0D1B2A',
+        link: 'https://www.instagram.com/bemstikombali/'
       },
       {
-        num: '02', title: 'Stella Bali', sub: 'UI/UX / Website Design',
-        desc: 'A website UI design for Stella Bali — A clean, professional, and service-forward design for a clothing store in Canggu, Bali. The design focuses on clarity and trust, built entirely in Figma with a desktop-first approach.',
-        year: '2026', role: 'UI/UX Designer', tools: 'Figma', type: 'Website',
-        tags: ['UI/UX', 'Web Design', 'Figma', 'Prototype'],
-        image: 'StellaBali.png', bg: '#1A1A2E'
+        num: '02', title: 'Desa Karang Dalem Tua Booklet', sub: 'Print Design / Photography',
+        desc: 'A travel booklet design for Desa Karang Dalem Tua — High-end tourism collateral featuring original photography, premium finishes, and a layout that balances cultural depth with modern readability.',
+        year: '2026', role: 'Graphic Designer/Photographer', tools: 'Photoshop', type: 'Print Design',
+        tags: ['Print Design', 'Photography'],
+        image: 'Booklet.png', bg: '#1A1A2E',
+        link: ''
       },
       {
-        num: '03', title: 'Bhaliera', sub: 'UI/UX / Website Design',
-        desc: 'UI/UX design for Bhaliera — A legal, training and certification services company in Buleleng, Bali. The interface blends authority with approachability, guiding users toward key services without friction.',
-        year: '2025', role: 'UI/UX Designer', tools: 'Figma', type: 'Website',
-        tags: ['UI/UX', 'Web Design', 'Figma', 'Corporate'],
-        image: 'bhaliera.png', bg: '#0D2137'
+        num: '03', title: 'Mie GA - Brand Design',
+        desc: 'A full brand design for Mie GA — A food and beverage company in Bali. The design blends authority with approachability, guiding users toward key services without friction.',
+        year: '2024', role: 'Graphic Designer', tools: 'Photoshop, Illustrator', type: 'Brand Design',
+        tags: ['Brand Design', 'Visual Identity', 'Photoshop', 'Illustrator'],
+        image: 'MieGA.png', bg: '#0D2137',
+        link: ''
       },
       {
         num: '04', title: 'Pemuteran Village', sub: 'UI/UX / Tourism Website',
         desc: 'UI/UX redesign for Pemuteran Village — a destination in Bali known for its marine conservation. The design highlights natural beauty while making local experiences easy to discover.',
         year: '2025', role: 'UI/UX Designer', tools: 'Figma', type: 'Website',
         tags: ['UI/UX', 'Tourism', 'Figma', 'Web Design'],
-        image: 'pemuteran.png', bg: '#0F2318'
+        image: 'Pemuteran.png', bg: '#0F2318',
+        link: 'https://spent-candy-06804118.figma.site/'
       }
     ];
 
@@ -2219,6 +2274,16 @@
       leftEl.style.background = p.bg;
       if (p.image) { imgEl.src = p.image; imgEl.style.display = 'block'; phEl.style.display = 'none'; }
       else { imgEl.style.display = 'none'; phEl.style.display = 'flex'; phEl.textContent = p.title; }
+
+      // Update project link button
+      const linkEl = document.getElementById('modalLink');
+      if (p.link) {
+        linkEl.href = p.link;
+        linkEl.style.display = 'inline-flex';
+      } else {
+        linkEl.style.display = 'none';
+      }
+
       document.getElementById('modal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
