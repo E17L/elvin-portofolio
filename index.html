@@ -36,13 +36,6 @@
 
     body {
       background-color: var(--bg);
-      background-image:
-        linear-gradient(135deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(10, 10, 10, .015) 25%, transparent 25%);
-      background-position: 16px 0, 16px 0, 0 0, 0 0;
-      background-size: 32px 32px;
       color: var(--fg);
       font-family: var(--mono);
       cursor: none;
@@ -105,13 +98,6 @@
       inset: 0;
       z-index: 1000;
       background-color: var(--bg);
-      background-image:
-        linear-gradient(135deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(10, 10, 10, .015) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(10, 10, 10, .015) 25%, transparent 25%);
-      background-position: 16px 0, 16px 0, 0 0, 0 0;
-      background-size: 32px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -262,33 +248,55 @@
       background: var(--red);
     }
 
-    .nav-avail {
-      display: flex;
+    .nav-cv-btn {
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      border: 1px solid var(--fg);
+      padding: 8px 16px;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: color .4s, border-color .4s;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 10px;
-      letter-spacing: .12em;
-      color: var(--muted);
+      justify-content: center;
+      background: transparent;
     }
 
-    .nav-avail-dot {
-      width: 6px;
-      height: 6px;
-      background: #4CAF50;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
+    .nav-cv-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--fg);
+      z-index: -2;
+      transition: background-color .4s;
     }
 
-    @keyframes pulse {
+    .nav-cv-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: translateX(-101%);
+      transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+      z-index: -1;
+    }
 
-      0%,
-      100% {
-        opacity: 1;
-      }
+    .nav-cv-btn:hover {
+      color: var(--bg);
+      border-color: var(--red);
+    }
 
-      50% {
-        opacity: .3;
-      }
+    .nav-cv-btn:hover::after {
+      transform: translateX(0);
+    }
+
+    .nav-cv-btn span {
+      position: relative;
+      z-index: 1;
     }
 
     /* ── SIDE DOTS ── */
@@ -1240,119 +1248,7 @@
       color: var(--fg);
     }
 
-    /* ── SERVICES ── */
-    #services {
-      background-color: var(--fg);
-      background-image:
-        linear-gradient(135deg, rgba(248, 245, 240, .02) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(248, 245, 240, .02) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(248, 245, 240, .02) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(248, 245, 240, .02) 25%, transparent 25%);
-      background-position: 16px 0, 16px 0, 0 0, 0 0;
-      background-size: 32px 32px;
-    }
 
-    #services .s-label {
-      color: #F8F5F0;
-    }
-
-    #services .s-label::before {
-      background: #F8F5F0;
-    }
-
-    .services-head {
-      font-family: var(--display);
-      font-size: clamp(48px, 7vw, 100px);
-      letter-spacing: .04em;
-      line-height: .9;
-      margin-bottom: 80px;
-      color: #F8F5F0;
-    }
-
-    .services-head em {
-      font-family: var(--serif);
-      font-style: italic;
-      color: #F33732;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(248, 245, 240, .2);
-    }
-
-    .svc-card {
-      background: var(--red);
-      padding: 48px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: background .4s;
-    }
-
-    .svc-card:hover {
-      background: #D42720;
-    }
-
-    .svc-line {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #0E0E0E;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .5s cubic-bezier(.76, 0, .24, 1);
-    }
-
-    .svc-card:hover .svc-line {
-      transform: scaleX(1);
-    }
-
-    .svc-n {
-      font-size: 9px;
-      letter-spacing: .2em;
-      color: rgba(248, 245, 240, .5);
-      margin-bottom: 32px;
-    }
-
-    .svc-icon {
-      font-size: 28px;
-      margin-bottom: 20px;
-      display: block;
-      color: #F8F5F0;
-    }
-
-    .svc-title {
-      font-family: var(--display);
-      font-size: 32px;
-      letter-spacing: .06em;
-      color: #F8F5F0;
-      margin-bottom: 14px;
-    }
-
-    .svc-desc {
-      font-size: 12px;
-      line-height: 1.8;
-      color: rgba(248, 245, 240, .75);
-    }
-
-    .svc-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 24px;
-    }
-
-    .svc-tool {
-      font-size: 8px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #F8F5F0;
-      border: 1px solid rgba(248, 245, 240, .3);
-      padding: 4px 10px;
-    }
 
     /* ── CONTACT ── */
     #contact {
@@ -1419,27 +1315,22 @@
     }
 
     .social-link {
-      font-size: 9px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--muted);
+      color: var(--bg);
+      background-color: var(--fg);
       text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 10px 18px;
-      transition: border-color .25s, color .25s;
+      border: 1px solid var(--fg);
+      width: 52px;
+      height: 52px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      transition: border-color .25s, color .25s, background-color .25s;
     }
 
     .social-link:hover {
       border-color: var(--red);
-      color: var(--fg);
-    }
-
-    .social-link::after {
-      content: '↗';
-      font-size: 11px;
+      color: var(--bg);
+      background-color: var(--red);
     }
 
     /* Form */
@@ -1593,6 +1484,32 @@
       transform: none;
     }
 
+    /* Elegant text reveal */
+    .reveal-text {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-text.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elegant image reveal */
+    .reveal-img {
+      opacity: 0;
+      transform: scale(1.03) translateY(30px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-img.in {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
     .d1 {
       transition-delay: .1s;
     }
@@ -1607,6 +1524,61 @@
 
     .d4 {
       transition-delay: .4s;
+    }
+
+    /* ── CV BUTTON ── */
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      border: 1px solid var(--fg);
+      padding: 14px 28px;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: color .4s, border-color .4s;
+      background: transparent;
+    }
+
+    .btn-cv::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--fg);
+      z-index: -2;
+      transition: background-color .4s;
+    }
+
+    .btn-cv::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: translateX(-101%);
+      transition: transform .45s cubic-bezier(.76, 0, .24, 1);
+      z-index: -1;
+    }
+
+    .btn-cv:hover {
+      color: var(--bg);
+      border-color: var(--red);
+    }
+
+    .btn-cv:hover::after {
+      transform: translateX(0);
+    }
+
+    .btn-cv span {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     /* ── RESPONSIVE ── */
@@ -1645,9 +1617,7 @@
         grid-template-columns: 1fr;
       }
 
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
+
 
       .modal-left {
         display: none;
@@ -1675,7 +1645,7 @@
         display: none;
       }
 
-      .nav-avail {
+      .nav-cv-btn {
         display: none;
       }
     }
@@ -1710,10 +1680,6 @@
       onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">
       <span class="side-dot-label">Work</span>
     </div>
-    <div class="side-dot" data-section="services"
-      onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-      <span class="side-dot-label">Services</span>
-    </div>
     <div class="side-dot" data-section="contact"
       onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       <span class="side-dot-label">Contact</span>
@@ -1738,15 +1704,14 @@
     </svg>
     <a href="#" class="nav-logo">ES<span>.</span></a>
     <ul class="nav-links">
+      <li><a href="#hero" data-section="hero">Home</a></li>
       <li><a href="#about" data-section="about">About</a></li>
       <li><a href="#work" data-section="work">Work</a></li>
-      <li><a href="#services" data-section="services">Services</a></li>
       <li><a href="#contact" data-section="contact">Contact</a></li>
     </ul>
-    <div class="nav-avail">
-      <div class="nav-avail-dot"></div>
-      Open for work
-    </div>
+    <a href="CV_Elvin_Sumitra.pdf" download class="nav-cv-btn">
+      <span>Download CV ↓</span>
+    </a>
   </nav>
 
   <!-- HERO -->
@@ -1763,6 +1728,9 @@
         <p class="hero-desc">Specializing in branding, social media &amp; UI/UX — crafting visual identities that feel
           lived-in, not designed.</p>
         <p class="hero-loc">Bali, Indonesia</p>
+        <a href="CV_Elvin_Sumitra.pdf" download class="btn-cv" style="margin-top: 10px;">
+          <span>Download CV ↓</span>
+        </a>
       </div>
     </div>
     <div class="hero-bottom">
@@ -1806,7 +1774,7 @@
   <section id="about" class="section">
     <div class="about-sticky">
       <p class="s-label reveal">About Me</p>
-      <div class="about-photo reveal d1">
+      <div class="about-photo reveal-img d1">
         <svg class="about-photo-corner apc-tl" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,0 L100,0 C80,5 65,20 60,40 C55,60 40,80 0,100 Z" fill="currentColor" opacity="0.4" />
           <path d="M0,0 L70,0 C50,10 40,25 30,50 C20,70 10,85 0,90 Z" fill="currentColor" opacity="0.7" />
@@ -1910,13 +1878,13 @@
           </g>
         </svg>
       </div>
-      <h2 class="about-heading reveal">
+      <h2 class="about-heading reveal-text">
         DESIGNER<br>
         BY <em>choice,</em><br>
         BALI BY<br>
         HEART.
       </h2>
-      <p class="about-body reveal d1">
+      <p class="about-body reveal-text d1">
         I'm <strong>Elvin Sumitra</strong>, a designer and student based in Bali, working at the crossroads of visual
         identity, digital interfaces, and content that actually stops people mid-scroll.<br><br>
         Three years in, I've discovered that the best design isn't just about looking good — it's about making things
@@ -1926,6 +1894,12 @@
         and motion graphics for various purposes, such as social media, advertising, and corporate
         communications.
       </p>
+
+      <div class="reveal d2" style="margin-top: 36px; margin-bottom: 48px;">
+        <a href="CV_Elvin_Sumitra.pdf" download class="btn-cv">
+          <span>Download CV ↓</span>
+        </a>
+      </div>
 
       <p class="s-label reveal" style="margin-bottom:28px;">Experience</p>
       <div class="timeline reveal d1">
@@ -2014,52 +1988,13 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <p class="s-label reveal">What I Do</p>
-    <h2 class="services-head reveal d1">
-      DESIGN THAT<br>
-      <em>works.</em>
-    </h2>
-    <div class="services-grid">
-      <div class="svc-card reveal">
-        <p class="svc-n">01</p>
-        <span class="svc-icon">◈</span>
-        <h3 class="svc-title">BRAND IDENTITY</h3>
-        <p class="svc-desc">Logos, visual systems, brand guidelines — built to live across every platform, screen, and
-          surface without losing their soul.</p>
-        <div class="svc-tools"><span class="svc-tool">Illustrator</span><span class="svc-tool">Photoshop</span><span
-            class="svc-tool">Figma</span></div>
-        <div class="svc-line"></div>
-      </div>
-      <div class="svc-card reveal d1">
-        <p class="svc-n">02</p>
-        <span class="svc-icon">◉</span>
-        <h3 class="svc-title">SOCIAL MEDIA</h3>
-        <p class="svc-desc">Feed aesthetics, templates, campaigns — the visual language that makes someone stop, look
-          twice, and follow.</p>
-        <div class="svc-tools"><span class="svc-tool">Photoshop</span><span class="svc-tool">After Effects</span><span
-            class="svc-tool">Figma</span></div>
-        <div class="svc-line"></div>
-      </div>
-      <div class="svc-card reveal d2">
-        <p class="svc-n">03</p>
-        <span class="svc-icon">◐</span>
-        <h3 class="svc-title">UI/UX DESIGN</h3>
-        <p class="svc-desc">Interfaces that feel obvious — not because they're plain, but because every decision was
-          made with the person using it in mind.</p>
-        <div class="svc-tools"><span class="svc-tool">Figma</span><span class="svc-tool">Prototyping</span><span
-            class="svc-tool">Design Systems</span></div>
-        <div class="svc-line"></div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div>
       <p class="s-label reveal">Let's Talk</p>
-      <h2 class="contact-h reveal d1">
+      <h2 class="contact-h reveal-text d1">
         GOT A<br>
         <em>project?</em><br>
         LET'S GO.
@@ -2079,9 +2014,25 @@
         </div>
       </div>
       <div class="social-links reveal d3">
-        <a href="https://www.instagram.com/elvin_sumitra/" class="social-link">Instagram</a>
-        <a href="https://www.facebook.com/elvin.sumitra.5" class="social-link">Facebook</a>
-        <a href="https://www.linkedin.com/in/elvin-sumitra-101483307/" class="social-link">LinkedIn</a>
+        <a href="https://www.instagram.com/elvin_sumitra/" class="social-link" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/elvin.sumitra.5" class="social-link" aria-label="Facebook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/elvin-sumitra-101483307/" class="social-link" aria-label="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -2195,7 +2146,7 @@
         desc: 'UI/UX redesign for Pemuteran Village — a destination in Bali known for its marine conservation. The design highlights natural beauty while making local experiences easy to discover.',
         year: '2025', role: 'UI/UX Designer', tools: 'Figma', type: 'Website',
         tags: ['UI/UX', 'Tourism', 'Figma', 'Web Design'],
-        image: 'Pemuteran.webp', bg: '#0F2318',
+        image: 'PemuteranMockup.webp', bg: '#0F2318',
         link: 'https://spent-candy-06804118.figma.site/'
       }
     ];
@@ -2219,7 +2170,7 @@
     let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
     (function loop() { rx += (mx - rx) * .1; ry += (my - ry) * .1; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
-    document.querySelectorAll('a,button,.proj-row,.svc-card,.modal-nav-btn,.modal-close,.foot-back,.side-dot').forEach(el => {
+    document.querySelectorAll('a,button,.proj-row,.modal-nav-btn,.modal-close,.foot-back,.side-dot').forEach(el => {
       el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
     });
@@ -2233,7 +2184,7 @@
     });
 
     // ── ACTIVE SECTION ──
-    const sections = ['hero', 'about', 'work', 'services', 'contact'];
+    const sections = ['hero', 'about', 'work', 'contact'];
     function updateActiveSection() {
       let current = 'hero';
       sections.forEach(id => {
@@ -2252,7 +2203,7 @@
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
     }, { threshold: .1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal, .reveal-text, .reveal-img').forEach(el => obs.observe(el));
 
     // ── PROJECT MODAL ──
     function openModal(index) {
